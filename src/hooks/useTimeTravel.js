@@ -8,8 +8,9 @@ const current = index > -1 ? dates[index]
     : '';
 
   const save = (event) => {
-    setDates((previousState) => [...previousState, event.target.value]);
-    setIndex(dates.length)
+    // setDates((previousState) => [...previousState, event.target.value]);
+    setDates((previousState) => [...previousState.slice(0, (index + 1)), event.target.value, ...previousState.slice((index + 1), dates.length + 1) ])
+    setIndex((prevIndex) => prevIndex + 1)
   };
 
   const undo = () => {setIndex(index -1)};
