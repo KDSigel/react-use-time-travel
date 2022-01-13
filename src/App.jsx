@@ -1,3 +1,19 @@
+import useTimeTravel from "./hooks/useTimeTravel";
+
 export default function App() {
-  return <h1>Hello World</h1>;
+
+const {save, undo, redo, current} = useTimeTravel()
+
+  return(
+    <>
+    <section>
+      <button onClick={undo}>undo</button>
+      <button onClick={redo}>redo</button>
+
+      <input aria-label="inputDate" type='date' value={current} onChange={save}/>
+
+      <div>{ !current ? <span>Please select a date</span> : current}</div>
+    </section>
+    </>
+  );
 }
